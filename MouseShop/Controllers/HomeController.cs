@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MouseShop.DAL.Interfaces;
 using MouseShop.Domain.Models;
 using MouseShop.Models;
 
@@ -7,21 +8,10 @@ namespace MouseShop.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
+    
     public IActionResult Index()
     {
-        Mouse mouse = new Mouse()
-        {
-            Name = "SteelSeries Sensei Ten",
-            Producer = "Razor"
-        };
-        return View(mouse);
+        return View();
     }
 
     public IActionResult Privacy()

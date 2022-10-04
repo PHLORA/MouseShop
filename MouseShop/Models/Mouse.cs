@@ -1,14 +1,16 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MouseShop.Domain.Models;
 
 public class Mouse
 {
-    public int Id { get; set; }
+    [Key]
+    public int ID_mouse { get; set; }
     
     public string Name { get; set; }
     
-    public float Weight { get; set; }
+    public double Weight { get; set; }
     
     public int DPI { get; set; }
     
