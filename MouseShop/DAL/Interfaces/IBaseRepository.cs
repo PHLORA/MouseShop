@@ -4,11 +4,11 @@ namespace MouseShop.DAL.Interfaces;
 
 public interface IBaseRepository<T>
 {
-    bool Create(T entity);
+    Task<bool> Create(T entity);
 
-    T Get(int id);
+    Task<Mouse> Get(int id);
 
     Task<List<Mouse>> Select();
 
-    bool Delete(T entity);
+    Task<bool> Delete(T entity);
 }

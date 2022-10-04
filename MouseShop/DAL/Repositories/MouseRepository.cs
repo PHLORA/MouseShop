@@ -14,14 +14,17 @@ public class MouseRepository : IMouseRepository
         _db = db;
     }
 
-    public bool Create(Mouse entity)
+    public async Task<bool> Create(Mouse entity)
     {
-        throw new NotImplementedException();
+        await _db.Mice.AddAsync(entity);
+        await _db.SaveChangesAsync();
+
+        return true;
     }
 
-    public Mouse Get(int id)
+    public async Task<Mouse> Get(int id)
     {
-        throw new NotImplementedException();
+        return await _db.Mice.FirstOrDefaultAsync(x => x.ID_mouse == id);
     }
 
     public Task<List<Mouse>> Select()
@@ -29,13 +32,16 @@ public class MouseRepository : IMouseRepository
         return _db.Mice.ToListAsync();
     }
 
-    public bool Delete(Mouse entity)
+    public async Task<bool> Delete(Mouse entity)
     {
-        throw new NotImplementedException();
+        _db.Mice.Remove(entity);
+        await _db.SaveChangesAsync();
+        
+        return true;
     }
 
-    public Mouse GetByName(string name)
+    public async Task<Mouse> GetByName(string name)
     {
-        throw new NotImplementedException();
+        return await _db.Mice.FirstOrDefaultAsync(x => x.Name == name);
     }
 }

@@ -3,6 +3,8 @@ using MouseShop.DAL;
 using MouseShop.DAL.Interfaces;
 using MouseShop.DAL.Repositories;
 using MouseShop.Domain.Models;
+using MouseShop.Service.Implementations;
+using MouseShop.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
 builder.Services.AddScoped<IMouseRepository, MouseRepository>();
+builder.Services.AddScoped<IMouseService, MouseService>();
 // Add services to the container.    
 builder.Services.AddControllersWithViews();
 

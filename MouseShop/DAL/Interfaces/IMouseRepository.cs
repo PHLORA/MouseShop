@@ -4,5 +4,5 @@ namespace MouseShop.DAL.Interfaces;
 
 public interface IMouseRepository : IBaseRepository<Mouse>
 {
-    Mouse GetByName(string name);
+    Task<Mouse> GetByName(string name);
 }
