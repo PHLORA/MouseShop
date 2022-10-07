@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BookShop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/index.css"/>
+    <link rel="stylesheet" href="~/css/getBook.css"/>
+</head>
+<body>
+    <style>
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid white;
+            float: left;
+            width: 100%;
+            background: white;
+            border-radius: 0;
+        }
+        form.example input[type=text]:focus{
+            box-shadow: none;
+        }
+    </style>
+    <header class="navbar navbar-expand-lg navbar-dark" style="background-color: #27ae61;">
+
+        <a class="navbar-brand font-weight-bold" href="~/Home/Index">BookStore</a>
+
+        <form class="example" style="margin-left: 45px; width: 300px;">
+            <input class="form-control" type="text" id="search_l" name="search_query" placeholder="Поиск" autocomplete="off">
+        </form>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_b" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu_b">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item font-weight-bold">
+                     <a class="nav-link" href="/Cart">Войти</a> @* @Html.Partial("_LoginPartial") *@
+                </li>
+                <li class="nav-item font-weight-bold active">
+                    <a class="nav-link" href="/Cart">Корзина</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

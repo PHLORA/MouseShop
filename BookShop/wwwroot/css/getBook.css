@@ -1,0 +1,54 @@
+﻿.con_book {
+    width: 1100px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    display: flex;
+}
+.book__picture{
+    width: 75%;
+}
+.book__name {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+}
+.book__desc {
+    color: #787878;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+.book__author {
+    margin-top: 25px;
+    font-size: 18px;
+}
+.span_book {
+    margin-left: 20px;
+    color: #27ae61;
+    font-size: 18px;
+}
+.book__infoo{
+    line-height: 1.6;
+    font-size: 18px;
+}
+.item-product__add {
+    margin-left: 20px;
+    color: white;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background-color: #27ae61;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 12px 30px 12px 30px;
+    border: 2px solid #27ae61;
+}
+.item-product__add:hover{
+    background-color: black;
+    border: 2px solid black;
+}
+.item-product__add:focus {
+    background-color: black;
+    border: 2px solid black;
+    outline: none;
+}

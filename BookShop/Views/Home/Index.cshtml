@@ -1,0 +1,198 @@
+﻿@model IEnumerable<BookShop.Domain.ViewModels.BookViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="con">
+    <aside class="page__side">
+        <form action="#" id="tags" class="filter">
+            <div class="filter__title">Фильтр товаров</div>
+            <div class="filter__body">
+                <div class="filter__section section-filter" id="genres">
+                    <div class="section-filter__title">Жанр:</div>
+                    <div class="section-filter__body">
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="genre" value="Роман" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Роман</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="genre" value="Фантастика" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Фантастика</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="genre" value="Детектив" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Детектив</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="genre" value="Компьютерная литература" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Компьютерная литература</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="genre" value="Психология" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Психология</span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="filter__section section-filter">
+                    <div class="section-filter__title">Цена (грн.):</div>
+                    <div class="section-filter__body">
+                        <div class="price-filter">
+                            <div class="price-filter__values values-price-filter">
+                                <div class="values-price-filter__column">
+                                    <div class="values-price-filter__label">от</div>
+                                    <div class="values-price-filter__input">
+                                        <input type="text" id="price_start"  class="price-input" />
+                                    </div>
+                                </div>
+                                <div class="values-price-filter__column">
+                                    <div class="values-price-filter__label">до</div>
+                                    <div class="values-price-filter__input">
+                                        <input type="text" id="price_end"  class="price-input" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__section section-filter">
+                    <div class="section-filter__title">Язык:</div>
+                    <div class="section-filter__body" id="languages">
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="language" value="Английский" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Английский</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="language" value="Русский" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Русский</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="language" value="Украинский" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Украинский</span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="filter__section section-filter" id="covers">
+                    <div class="section-filter__title">Тип переплета:</div>
+                    <div class="section-filter__body">
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="cover" value="Мягкий" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Мягкий</span></span>
+                        </label>
+                        <label class="section-filter__checkbox">
+                            <input type="checkbox" id="cover" value="Твердый" class="checkbox__input" />
+                            <span class="checkbox__text"><span>Твердый</span></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="filter__footer">
+                <button type="submit" id="search" class="form__btn btn_orange">Подобрать</button>
+            </div>
+        </form>
+    </aside>
+        <div class="catalog">
+            <h1 class="catalog__title">Список товаров</h1>
+            <div class="catalog__actions actions-catalog">
+                <div class="count__books" id="bc"> </div>
+                <div class="actions-catalog_order order-catalog">
+                    <div class="order-catalog__label">Сортировка:</div>
+                    <div class="order-catalog__select">
+                        <select name="form[] select" class="form form-select" id="sort">
+                            <option selected="selected">По умолчанию</option>
+                            <option>Цена (по убыванию)</option>
+                            <option>Цена (по возрастанию)</option>
+                            <option>По названию(А-Я)</option>
+                            <option>По названию(Я-А)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="books">
+
+            </div>
+            @*@foreach (var item in @Model)
+                {
+                    <div class="page__products">
+                        <div class="items-products">
+                            <div class="items-products__column">
+                                <div class="item-product">
+                                    <div class="item-product__labels"></div>
+                                    <div href="" class="item-product__image">
+                                        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                        + Convert.ToBase64String(item.Image) + "\" />")
+                                    </div>
+                                    <div class="item-product__body">
+                                        @Html.ActionLink(item.Name, "Details", new { }, new { @class = "item-product__title" })
+                                        <div class="item-product__author">@Html.DisplayFor(modelItem => item.Author)</div>
+                                        <div class="item-product__footer">
+                                            <div class="item-product_price uah">@item.Price.ToString("# грн")</div>
+                                            <button type="button" class="item-product__add">В корзину</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }*@
+        </div>
+    </div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $("#search_l").on('input', function () {
+        $("#search").click();
+
+    });
+    $('#sort').on('input', function () {
+        console.log(1);
+        $("#search").click();
+    });
+    $(document).ready(function () {
+        $("#search").click();
+    });
+    $("#search").on('click', function () {
+        var languageList = new Array(), language = document.forms['tags']['language'];
+        for (var i = 0, elm; elm = language[i]; i++) {
+            if (elm.checked) {
+                languageList.push(elm.value);
+            }
+        }
+        var genresList = new Array(), genre = document.forms['tags']['genre'];
+        for (var i = 0, elm; elm = genre[i]; i++) {
+            if (elm.checked) {
+                genresList.push(elm.value);
+            }
+        }
+        var coverList = new Array(), cover = document.forms['tags']['cover'];
+        for (var i = 0, elm; elm = cover[i]; i++) {
+            if (elm.checked) {
+                coverList.push(elm.value);
+            }
+        }
+        var sort_l = document.getElementById("sort").value;
+        let search_l = document.getElementById("search_l").value;
+        let price_st = document.getElementById("price_start").value;
+        let price_end = document.getElementById("price_end").value;
+
+
+        $.ajax({
+            host: 'localhost',
+            type: 'POST',
+            url: '/Book/GetBooks',
+            data: { genres: genresList, languages: languageList, cover: coverList, sort: sort_l, searchLine: search_l,ps:price_st,pe:price_end },
+            success: function (data) {
+                $("#books").html(data);
+            },
+            complete: function () {
+                var value = document.getElementById("books_count").value;
+                document.getElementById("bc").textContent = ("Найдено книг: " + value);
+            }
+        });
+
+    });
+</script>

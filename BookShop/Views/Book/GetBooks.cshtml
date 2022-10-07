@@ -1,0 +1,43 @@
+﻿@model List<BookShop.Domain.Models.Book>
+
+<input type="hidden" value="@Model.Count()" id="books_count" />
+
+<div class="container-fluid">
+    <div class="row col-12">
+
+
+        @foreach (var item in Model)
+        {
+            <div class="page__products col-4">
+                <div class="items-products">
+                    <div class="items-products__column">
+                        <div class="item-product">
+                                <div class="item-product__labels"></div>
+                                <div href="" class="item-product__image">
+                                    <a class="link" href="/home/book?id=@item.Id">
+                                        @* @Html.Raw("<img src=\"data:image/jpeg;base64," *@
+                                        @* + Convert.ToBase64String(item.Image) + "\" />") *@
+                                    </a>
+                                </div>
+                                <div class="item-product__body">
+                                    <a class="link item-product__title" href="/home/book?id=@item.Id">@item.Name</a>
+                                        <div class="item-product__author">@Html.DisplayFor(modelItem => item.Author)</div>
+                                        <div class="item-product__footer">
+                                            <div class="item-product_price uah">@item.Price.ToString("# грн")</div>
+                                            @* @using (Html.BeginForm("AddToCart", "Cart")) *@
+                                            @* { *@
+                                            @*     <div class="pull-right"> *@
+                                            @*         <input name="bookId" value="@item.Id" type="hidden" /> *@
+                                            @*         @Html.Hidden("returnUrl", Request.Url.PathAndQuery) *@
+                                            @*         <button type="submit" class="item-product__add">В корзину</button> *@
+                                            @*     </div> *@
+                                            @* } *@
+                                        </div>
+                                 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

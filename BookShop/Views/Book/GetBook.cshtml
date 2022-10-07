@@ -1,0 +1,83 @@
+﻿@model BookShop.Domain.Models.Book
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "_Layout";
+}
+
+<style>
+    .con_book {
+        width: 1100px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 20px;
+        display: flex;
+    }
+    .book__picture{
+        width: 75%;
+    }
+    .book__name {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .book__desc {
+        color: #787878;
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+    .book__author {
+        margin-top: 25px;
+        font-size: 18px;
+    }
+    .span_book {
+        margin-left: 20px;
+        color: #27ae61;
+        font-size: 18px;
+    }
+    .book__infoo{
+        line-height: 1.6;
+        font-size: 18px;
+    }
+    .item-product__add {
+        margin-left: 20px;
+        color: white;
+        margin-top: 20px;
+        text-transform: uppercase;
+        background-color: #27ae61;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 12px 30px 12px 30px;
+        border: 2px solid #27ae61;
+    }
+        .item-product__add:hover{
+            background-color: black;
+            border: 2px solid black;
+        }
+        .item-product__add:focus {
+            background-color: black;
+            border: 2px solid black;
+            outline: none;
+        }
+</style>
+<div class="con_book">
+    <div class="book__picture">
+        @* @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Picture.Image) + "\" / width='350'>") *@
+    </div>
+    <div class="book__info">
+        <div class="book__name">@Model.Name</div>
+        <div class="book__desc">@Model.Description</div>
+        <div class="book__author"><span class="span_book">Автор:</span> @Model.Author</div>
+        <div class="book__infoo"><span class="span_book">Жанр:</span> @Model.Genre</div>
+        <div class="book__infoo"><span class="span_book">Язык:</span> @Model.Language</div>
+        <div class="book__infoo"><span class="span_book">Переплет:</span> @Model.Cover</div>
+        <div class="book__infoo"><span class="span_book">Цена:</span> @Model.Price.ToString("# грн")</div>
+        @* @using (Html.BeginForm("AddToCart", "Cart")) *@
+        @* { *@
+        @*     <input name="bookId" value="@Model.Id" type="hidden" /> *@
+        @*     @Html.Hidden("returnUrl", Request.Url.PathAndQuery) *@
+        @*     <button type="submit" class="item-product__add">В корзину</button> *@
+        @* } *@
+    </div>
+</div>
